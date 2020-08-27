@@ -1,0 +1,6 @@
+addon tumblr version 1.0.0.0
+addon core version 4.107.0.0
+addon language version 4.106.1.0
+tumblr.open chrome 
+tumblr.login email ♥credential⟦twitter:login⟧ pword ♥credential⟦twitter:password⟧ search 
+tumblr.audio urlvalue ‴https://www.zedge.net/ringtone/b5aa1643-8081-34da-8747-429272532879‴ search 

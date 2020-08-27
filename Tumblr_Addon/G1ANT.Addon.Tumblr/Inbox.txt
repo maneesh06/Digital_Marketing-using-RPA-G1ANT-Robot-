@@ -1,0 +1,7 @@
+addon tumblr version 1.0.0.0
+addon core version 4.107.0.0
+addon language version 4.106.1.0
+tumblr.open chrome 
+tumblr.login email ♥credential⟦twitter:login⟧ pword ♥credential⟦twitter:password⟧ search 
+tumblr.inbox search 
+delay 5

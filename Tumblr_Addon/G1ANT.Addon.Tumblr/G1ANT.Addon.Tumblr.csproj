@@ -1,0 +1,683 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="15.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProductVersion>8.0.30703</ProductVersion>
+    <SchemaVersion>2.0</SchemaVersion>
+    <ProjectGuid>{BFFE56C3-91BE-447A-8570-2B41BE70E300}</ProjectGuid>
+    <OutputType>Library</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>G1ANT.Addon.Tumblr</RootNamespace>
+    <AssemblyName>G1ANT.Addon.Tumblr</AssemblyName>
+    <TargetFrameworkVersion>v4.6.1</TargetFrameworkVersion>
+    <FileAlignment>512</FileAlignment>
+    <NuGetPackageImportStamp>
+    </NuGetPackageImportStamp>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="BouncyCastle.Crypto, Version=1.8.6.0, Culture=neutral, PublicKeyToken=0e99375e54769942, processorArchitecture=MSIL">
+      <HintPath>..\packages\Portable.BouncyCastle.1.8.6.7\lib\net40\BouncyCastle.Crypto.dll</HintPath>
+    </Reference>
+    <Reference Include="G1ANT.Language, Version=4.106.2.0, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\packages\G1ANT.Language.4.106.2\lib\net452\G1ANT.Language.dll</HintPath>
+    </Reference>
+    <Reference Include="HtmlAgilityPack, Version=1.11.24.0, Culture=neutral, PublicKeyToken=bd319b19eaf3b43a, processorArchitecture=MSIL">
+      <HintPath>..\packages\HtmlAgilityPack.1.11.24\lib\Net45\HtmlAgilityPack.dll</HintPath>
+    </Reference>
+    <Reference Include="MailKit, Version=2.8.0.0, Culture=neutral, PublicKeyToken=4e064fe7c44a8f1b, processorArchitecture=MSIL">
+      <HintPath>..\packages\MailKit.2.8.0\lib\net46\MailKit.dll</HintPath>
+    </Reference>
+    <Reference Include="MimeKit, Version=2.9.0.0, Culture=neutral, PublicKeyToken=bede1c8a46c66814, processorArchitecture=MSIL">
+      <HintPath>..\packages\MimeKit.2.9.1\lib\net46\MimeKit.dll</HintPath>
+    </Reference>
+    <Reference Include="Newtonsoft.Json, Version=12.0.0.0, Culture=neutral, PublicKeyToken=30ad4fe6b2a6aeed, processorArchitecture=MSIL">
+      <HintPath>..\packages\Newtonsoft.Json.12.0.3\lib\net45\Newtonsoft.Json.dll</HintPath>
+    </Reference>
+    <Reference Include="NLog, Version=4.0.0.0, Culture=neutral, PublicKeyToken=5120e14c03d0593c, processorArchitecture=MSIL">
+      <HintPath>..\packages\NLog.4.7.2\lib\net45\NLog.dll</HintPath>
+    </Reference>
+    <Reference Include="Selenium.WebDriverBackedSelenium, Version=3.141.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\packages\Selenium.WebDriverBackedSelenium.3.141.0\lib\net45\Selenium.WebDriverBackedSelenium.dll</HintPath>
+    </Reference>
+    <Reference Include="SeleniumExtras.PageObjects, Version=3.11.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\packages\DotNetSeleniumExtras.PageObjects.3.11.0\lib\net45\SeleniumExtras.PageObjects.dll</HintPath>
+    </Reference>
+    <Reference Include="SeleniumExtras.WaitHelpers, Version=3.11.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\packages\DotNetSeleniumExtras.WaitHelpers.3.11.0\lib\net45\SeleniumExtras.WaitHelpers.dll</HintPath>
+    </Reference>
+    <Reference Include="System" />
+    <Reference Include="System.Configuration" />
+    <Reference Include="System.Core" />
+    <Reference Include="System.Drawing" />
+    <Reference Include="System.IO.Compression" />
+    <Reference Include="System.Net.Http" />
+    <Reference Include="System.Runtime.Serialization" />
+    <Reference Include="System.Security" />
+    <Reference Include="System.ServiceModel" />
+    <Reference Include="System.Transactions" />
+    <Reference Include="System.Xml.Linq" />
+    <Reference Include="System.Data.DataSetExtensions" />
+    <Reference Include="System.Windows.Forms" />
+    <Reference Include="Microsoft.CSharp" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Xml" />
+    <Reference Include="ThoughtWorks.Selenium.Core, Version=3.1.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\packages\Selenium.RC.3.1.0\lib\net40\ThoughtWorks.Selenium.Core.dll</HintPath>
+    </Reference>
+    <Reference Include="WebDriver, Version=3.141.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\packages\Selenium.WebDriver.3.141.0\lib\net45\WebDriver.dll</HintPath>
+    </Reference>
+    <Reference Include="WebDriver.Support, Version=3.141.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\packages\Selenium.Support.3.141.0\lib\net45\WebDriver.Support.dll</HintPath>
+    </Reference>
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="audioCommand.cs" />
+    <Compile Include="chatCommand.cs" />
+    <Compile Include="inboxCommand.cs" />
+    <Compile Include="linkCommand.cs" />
+    <Compile Include="photoCommand.cs" />
+    <Compile Include="quoteCommand.cs" />
+    <Compile Include="trendingCommand.cs" />
+    <Compile Include="followCommand.cs" />
+    <Compile Include="logoutCommand.cs" />
+    <Compile Include="newstoryCommand.cs" />
+    <Compile Include="settingCommand.cs" />
+    <Compile Include="Tumblr.cs" />
+    <Compile Include="Api\Enums\AttributeOperationType.cs" />
+    <Compile Include="Api\Enums\BrowserType.cs" />
+    <Compile Include="Api\Enums\ElementSearchBy.cs" />
+    <Compile Include="Api\SeleniumCommandArguments.cs" />
+    <Compile Include="Api\SeleniumExtensions.cs" />
+    <Compile Include="Api\SeleniumIFrameArguments.cs" />
+    <Compile Include="Api\SeleniumManager.cs" />
+    <Compile Include="Api\SeleniumSettings.cs" />
+    <Compile Include="Api\SeleniumWrapper.cs" />
+    <Compile Include="closeCommand.cs" />
+    <Compile Include="CustomExpectedConditions.cs" />
+    <Compile Include="loginCommand.cs" />
+    <Compile Include="openCommand.cs" />
+    <Compile Include="searchCommand.cs" />
+    <Compile Include="Variables\TimeoutSeleniumVariable.cs" />
+    <Compile Include="videoCommand.cs" />
+    <EmbedResource Include="License.txt" />
+    <!-- REMOVE IT
+    <EmbeddedResource Include="Properties\Resources.resx">
+      <Generator>ResXFileCodeGenerator</Generator>
+      <LastGenOutput>Resources.Designer.cs</LastGenOutput>
+    </EmbeddedResource>
+    -->
+    <Compile Include="Properties\AssemblyInfo.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="app.config" />
+    <None Include="packages.config" />
+    <None Include="packages\BouncyCastle.1.8.6.1\.signature.p7s" />
+    <None Include="packages\BouncyCastle.1.8.6.1\BouncyCastle.1.8.6.1.nupkg" />
+    <None Include="packages\BouncyCastle.1.8.6.1\README.md" />
+    <None Include="packages\BrotliSharpLib.0.3.3\.signature.p7s" />
+    <None Include="packages\BrotliSharpLib.0.3.3\BrotliSharpLib.0.3.3.nupkg" />
+    <None Include="packages\DotNetSeleniumExtras.PageObjects.3.11.0\.signature.p7s" />
+    <None Include="packages\DotNetSeleniumExtras.PageObjects.3.11.0\DotNetSeleniumExtras.PageObjects.3.11.0.nupkg" />
+    <None Include="packages\DotNetSeleniumExtras.PageObjects.Core.3.12.0\.signature.p7s" />
+    <None Include="packages\DotNetSeleniumExtras.PageObjects.Core.3.12.0\DotNetSeleniumExtras.PageObjects.Core.3.12.0.nupkg" />
+    <None Include="packages\DotNetSeleniumExtras.WaitHelpers.3.11.0\.signature.p7s" />
+    <None Include="packages\DotNetSeleniumExtras.WaitHelpers.3.11.0\DotNetSeleniumExtras.WaitHelpers.3.11.0.nupkg" />
+    <None Include="packages\DotNetZip.Reduced.1.9.1.8\.signature.p7s" />
+    <None Include="packages\DotNetZip.Reduced.1.9.1.8\DotNetZip.Reduced.1.9.1.8.nupkg" />
+    <None Include="packages\ExeCutor.1.0.1\.signature.p7s" />
+    <None Include="packages\ExeCutor.1.0.1\ExeCutor.1.0.1.nupkg" />
+    <None Include="packages\Eyes.Sdk.Core.2.30.0\.signature.p7s" />
+    <None Include="packages\Eyes.Sdk.Core.2.30.0\Eyes.Sdk.Core.2.30.0.nupkg" />
+    <None Include="packages\Eyes.Selenium.2.30.0\.signature.p7s" />
+    <None Include="packages\Eyes.Selenium.2.30.0\Eyes.Selenium.2.30.0.nupkg" />
+    <None Include="packages\G1ANT.Language.4.106.2\.signature.p7s" />
+    <None Include="packages\G1ANT.Language.4.106.2\G1ANT.Language.4.106.2.nupkg" />
+    <None Include="packages\HtmlAgilityPack.1.11.24\.signature.p7s" />
+    <None Include="packages\HtmlAgilityPack.1.11.24\HtmlAgilityPack.1.11.24.nupkg" />
+    <None Include="packages\HtmlAgilityPack.1.11.24\lib\netstandard1.3\HtmlAgilityPack.deps.json" />
+    <None Include="packages\HtmlAgilityPack.1.11.24\lib\netstandard1.6\HtmlAgilityPack.deps.json" />
+    <None Include="packages\HtmlAgilityPack.1.11.24\lib\netstandard2.0\HtmlAgilityPack.deps.json" />
+    <None Include="packages\HtmlAgilityPack.1.11.24\lib\uap10.0\HtmlAgilityPack.pri" />
+    <None Include="packages\MailKit.2.8.0\.signature.p7s" />
+    <None Include="packages\MailKit.2.8.0\MailKit.2.8.0.nupkg" />
+    <None Include="packages\MediatR.8.0.2\.signature.p7s" />
+    <None Include="packages\MediatR.8.0.2\MediatR.8.0.2.nupkg" />
+    <None Include="packages\Microsoft.Edge.SeleniumTools.3.141.2\.signature.p7s" />
+    <None Include="packages\Microsoft.Edge.SeleniumTools.3.141.2\Microsoft.Edge.SeleniumTools.3.141.2.nupkg" />
+    <None Include="packages\MimeKit.2.9.1\.signature.p7s" />
+    <None Include="packages\MimeKit.2.9.1\MimeKit.2.9.1.nupkg" />
+    <None Include="packages\Newtonsoft.Json.12.0.3\.signature.p7s" />
+    <None Include="packages\Newtonsoft.Json.12.0.3\LICENSE.md" />
+    <None Include="packages\Newtonsoft.Json.12.0.3\Newtonsoft.Json.12.0.3.nupkg" />
+    <None Include="packages\NLog.4.7.2\.signature.p7s" />
+    <None Include="packages\NLog.4.7.2\NLog.4.7.2.nupkg" />
+    <None Include="packages\NSpectator.Selenium.0.9.9\.signature.p7s" />
+    <None Include="packages\NSpectator.Selenium.0.9.9\NSpectator.Selenium.0.9.9.nupkg" />
+    <None Include="packages\NuGet.CommandLine.5.6.0\.signature.p7s" />
+    <None Include="packages\NuGet.CommandLine.5.6.0\NuGet.CommandLine.5.6.0.nupkg" />
+    <None Include="packages\OpenQA.Selenium.Winium.1.0.0.4\.signature.p7s" />
+    <None Include="packages\OpenQA.Selenium.Winium.1.0.0.4\lib\OpenQA.Selenium.Winium.deps.json" />
+    <None Include="packages\OpenQA.Selenium.Winium.1.0.0.4\OpenQA.Selenium.Winium.1.0.0.4.nupkg" />
+    <None Include="packages\Portable.BouncyCastle.1.8.6.7\.signature.p7s" />
+    <None Include="packages\Portable.BouncyCastle.1.8.6.7\Portable.BouncyCastle.1.8.6.7.nupkg" />
+    <None Include="packages\Selenium.Axe.1.5.2\.signature.p7s" />
+    <None Include="packages\Selenium.Axe.1.5.2\Selenium.Axe.1.5.2.nupkg" />
+    <None Include="packages\Selenium.Chrome.WebDriver.83.0.0\.signature.p7s" />
+    <None Include="packages\Selenium.Chrome.WebDriver.83.0.0\build\Selenium.Chrome.WebDriver.targets" />
+    <None Include="packages\Selenium.Chrome.WebDriver.83.0.0\Selenium.Chrome.WebDriver.83.0.0.nupkg" />
+    <None Include="packages\Selenium.Firefox.WebDriver.0.26.0\.signature.p7s" />
+    <None Include="packages\Selenium.Firefox.WebDriver.0.26.0\build\Selenium.Firefox.WebDriver.targets" />
+    <None Include="packages\Selenium.Firefox.WebDriver.0.26.0\Selenium.Firefox.WebDriver.0.26.0.nupkg" />
+    <None Include="packages\Selenium.Microsoft.Webdriver2.2.0.10586.1\.signature.p7s" />
+    <None Include="packages\Selenium.Microsoft.Webdriver2.2.0.10586.1\Selenium.Microsoft.Webdriver2.2.0.10586.1.nupkg" />
+    <None Include="packages\Selenium.Microsoft.Webdriver2.2.0.10586.1\tools\install.ps1" />
+    <None Include="packages\Selenium.Microsoft.Webdriver2.2.0.10586.1\tools\uninstall.ps1" />
+    <None Include="packages\Selenium.PhantomJS.WebDriver.2.1.1\.signature.p7s" />
+    <None Include="packages\Selenium.PhantomJS.WebDriver.2.1.1\build\Selenium.PhantomJS.WebDriver.targets" />
+    <None Include="packages\Selenium.PhantomJS.WebDriver.2.1.1\Selenium.PhantomJS.WebDriver.2.1.1.nupkg" />
+    <None Include="packages\Selenium.RC.3.1.0\.signature.p7s" />
+    <None Include="packages\Selenium.RC.3.1.0\Selenium.RC.3.1.0.nupkg" />
+    <None Include="packages\Selenium.Support.3.141.0\.signature.p7s" />
+    <None Include="packages\Selenium.Support.3.141.0\Selenium.Support.3.141.0.nupkg" />
+    <None Include="packages\Selenium.WebDriver.3.141.0\.signature.p7s" />
+    <None Include="packages\Selenium.WebDriver.3.141.0\Selenium.WebDriver.3.141.0.nupkg" />
+    <None Include="packages\Selenium.WebDriver.ChromeDriver.83.0.4103.3910\.signature.p7s" />
+    <None Include="packages\Selenium.WebDriver.ChromeDriver.83.0.4103.3910\build\Selenium.WebDriver.ChromeDriver.targets" />
+    <None Include="packages\Selenium.WebDriver.ChromeDriver.83.0.4103.3910\driver\linux64\chromedriver" />
+    <None Include="packages\Selenium.WebDriver.ChromeDriver.83.0.4103.3910\driver\mac64\chromedriver" />
+    <None Include="packages\Selenium.WebDriver.ChromeDriver.83.0.4103.3910\Selenium.WebDriver.ChromeDriver.83.0.4103.3910.nupkg" />
+    <None Include="packages\Selenium.WebDriver.Extensions.3.3.0\.signature.p7s" />
+    <None Include="packages\Selenium.WebDriver.Extensions.3.3.0\Selenium.WebDriver.Extensions.3.3.0.nupkg" />
+    <None Include="packages\Selenium.WebDriver.GeckoDriver.0.26.0.3\.signature.p7s" />
+    <None Include="packages\Selenium.WebDriver.GeckoDriver.0.26.0.3\build\Selenium.WebDriver.GeckoDriver.targets" />
+    <None Include="packages\Selenium.WebDriver.GeckoDriver.0.26.0.3\driver\linux64\geckodriver" />
+    <None Include="packages\Selenium.WebDriver.GeckoDriver.0.26.0.3\driver\mac64\geckodriver" />
+    <None Include="packages\Selenium.WebDriver.GeckoDriver.0.26.0.3\Selenium.WebDriver.GeckoDriver.0.26.0.3.nupkg" />
+    <None Include="packages\Selenium.WebDriver.GeckoDriver.Win64.0.26.0.3\.signature.p7s" />
+    <None Include="packages\Selenium.WebDriver.GeckoDriver.Win64.0.26.0.3\build\Selenium.WebDriver.GeckoDriver.Win64.targets" />
+    <None Include="packages\Selenium.WebDriver.GeckoDriver.Win64.0.26.0.3\Selenium.WebDriver.GeckoDriver.Win64.0.26.0.3.nupkg" />
+    <None Include="packages\Selenium.WebDriver.IEDriver.3.150.1.1\.signature.p7s" />
+    <None Include="packages\Selenium.WebDriver.IEDriver.3.150.1.1\build\Selenium.WebDriver.IEDriver.targets" />
+    <None Include="packages\Selenium.WebDriver.IEDriver.3.150.1.1\Selenium.WebDriver.IEDriver.3.150.1.1.nupkg" />
+    <None Include="packages\Selenium.WebDriver.MicrosoftDriver.17.17134.0\.signature.p7s" />
+    <None Include="packages\Selenium.WebDriver.MicrosoftDriver.17.17134.0\build\Selenium.WebDriver.MicrosoftDriver.targets" />
+    <None Include="packages\Selenium.WebDriver.MicrosoftDriver.17.17134.0\Selenium.WebDriver.MicrosoftDriver.17.17134.0.nupkg" />
+    <None Include="packages\Selenium.WebDriver.MicrosoftWebDriver.10.0.17134\.signature.p7s" />
+    <None Include="packages\Selenium.WebDriver.MicrosoftWebDriver.10.0.17134\build\Selenium.WebDriver.MicrosoftWebDriver.targets" />
+    <None Include="packages\Selenium.WebDriver.MicrosoftWebDriver.10.0.17134\Selenium.WebDriver.MicrosoftWebDriver.10.0.17134.nupkg" />
+    <None Include="packages\Selenium.WebDriver.MSEdgeDriver.83.0.478.58\.signature.p7s" />
+    <None Include="packages\Selenium.WebDriver.MSEdgeDriver.83.0.478.58\build\Selenium.WebDriver.MSEdgeDriver.targets" />
+    <None Include="packages\Selenium.WebDriver.MSEdgeDriver.83.0.478.58\driver\mac64\msedgedriver" />
+    <None Include="packages\Selenium.WebDriver.MSEdgeDriver.83.0.478.58\Selenium.WebDriver.MSEdgeDriver.83.0.478.58.nupkg" />
+    <None Include="packages\Selenium.WebDriver.PhantomJS.1.0.0.0\.signature.p7s" />
+    <None Include="packages\Selenium.WebDriver.PhantomJS.1.0.0.0\build\Selenium.WebDriver.PhantomJS.targets" />
+    <None Include="packages\Selenium.WebDriver.PhantomJS.1.0.0.0\Selenium.WebDriver.PhantomJS.1.0.0.0.nupkg" />
+    <None Include="packages\Selenium.WebDriver.PhantomJS.Xplatform.2.45.0.1\.signature.p7s" />
+    <None Include="packages\Selenium.WebDriver.PhantomJS.Xplatform.2.45.0.1\Selenium.WebDriver.PhantomJS.Xplatform.2.45.0.1.nupkg" />
+    <None Include="packages\Selenium.WebDriver.WaitExtensions.2.0.0\.signature.p7s" />
+    <None Include="packages\Selenium.WebDriver.WaitExtensions.2.0.0\Selenium.WebDriver.WaitExtensions.2.0.0.nupkg" />
+    <None Include="packages\Selenium.WebDriverBackedSelenium.3.141.0\.signature.p7s" />
+    <None Include="packages\Selenium.WebDriverBackedSelenium.3.141.0\Selenium.WebDriverBackedSelenium.3.141.0.nupkg" />
+    <None Include="packages\System.Runtime.4.3.1\.signature.p7s" />
+    <None Include="packages\System.Runtime.4.3.1\lib\MonoAndroid10\_._" />
+    <None Include="packages\System.Runtime.4.3.1\lib\MonoTouch10\_._" />
+    <None Include="packages\System.Runtime.4.3.1\lib\net45\_._" />
+    <None Include="packages\System.Runtime.4.3.1\lib\portable-net45+win8+wp80+wpa81\_._" />
+    <None Include="packages\System.Runtime.4.3.1\lib\win8\_._" />
+    <None Include="packages\System.Runtime.4.3.1\lib\wp80\_._" />
+    <None Include="packages\System.Runtime.4.3.1\lib\wpa81\_._" />
+    <None Include="packages\System.Runtime.4.3.1\lib\xamarinios10\_._" />
+    <None Include="packages\System.Runtime.4.3.1\lib\xamarinmac20\_._" />
+    <None Include="packages\System.Runtime.4.3.1\lib\xamarintvos10\_._" />
+    <None Include="packages\System.Runtime.4.3.1\lib\xamarinwatchos10\_._" />
+    <None Include="packages\System.Runtime.4.3.1\ref\MonoAndroid10\_._" />
+    <None Include="packages\System.Runtime.4.3.1\ref\MonoTouch10\_._" />
+    <None Include="packages\System.Runtime.4.3.1\ref\net45\_._" />
+    <None Include="packages\System.Runtime.4.3.1\ref\portable-net45+win8+wp80+wpa81\_._" />
+    <None Include="packages\System.Runtime.4.3.1\ref\win8\_._" />
+    <None Include="packages\System.Runtime.4.3.1\ref\wp80\_._" />
+    <None Include="packages\System.Runtime.4.3.1\ref\wpa81\_._" />
+    <None Include="packages\System.Runtime.4.3.1\ref\xamarinios10\_._" />
+    <None Include="packages\System.Runtime.4.3.1\ref\xamarinmac20\_._" />
+    <None Include="packages\System.Runtime.4.3.1\ref\xamarintvos10\_._" />
+    <None Include="packages\System.Runtime.4.3.1\ref\xamarinwatchos10\_._" />
+    <None Include="packages\System.Runtime.4.3.1\System.Runtime.4.3.1.nupkg" />
+    <None Include="packages\System.Runtime.CompilerServices.Unsafe.4.7.1\.signature.p7s" />
+    <None Include="packages\System.Runtime.CompilerServices.Unsafe.4.7.1\System.Runtime.CompilerServices.Unsafe.4.7.1.nupkg" />
+    <None Include="packages\WebDriver.Extensions.1.0.0\.signature.p7s" />
+    <None Include="packages\WebDriver.Extensions.1.0.0\LICENSE" />
+    <None Include="packages\WebDriver.Extensions.1.0.0\WebDriver.Extensions.1.0.0.nupkg" />
+    <None Include="Variables\TimeoutSeleniumVariable.md" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="packages\BouncyCastle.1.8.6.1\lib\BouncyCastle.Crypto.dll" />
+    <Content Include="packages\BrotliSharpLib.0.3.3\lib\net20\BrotliSharpLib.dll" />
+    <Content Include="packages\BrotliSharpLib.0.3.3\lib\net20\BrotliSharpLib.xml" />
+    <Content Include="packages\BrotliSharpLib.0.3.3\lib\net35\BrotliSharpLib.dll" />
+    <Content Include="packages\BrotliSharpLib.0.3.3\lib\net35\BrotliSharpLib.xml" />
+    <Content Include="packages\BrotliSharpLib.0.3.3\lib\net40\BrotliSharpLib.dll" />
+    <Content Include="packages\BrotliSharpLib.0.3.3\lib\net40\BrotliSharpLib.xml" />
+    <Content Include="packages\BrotliSharpLib.0.3.3\lib\net451\BrotliSharpLib.dll" />
+    <Content Include="packages\BrotliSharpLib.0.3.3\lib\net451\BrotliSharpLib.xml" />
+    <Content Include="packages\BrotliSharpLib.0.3.3\lib\net45\BrotliSharpLib.dll" />
+    <Content Include="packages\BrotliSharpLib.0.3.3\lib\net45\BrotliSharpLib.xml" />
+    <Content Include="packages\BrotliSharpLib.0.3.3\lib\netstandard1.1\BrotliSharpLib.dll" />
+    <Content Include="packages\BrotliSharpLib.0.3.3\lib\netstandard1.1\BrotliSharpLib.xml" />
+    <Content Include="packages\BrotliSharpLib.0.3.3\lib\netstandard1.3\BrotliSharpLib.dll" />
+    <Content Include="packages\BrotliSharpLib.0.3.3\lib\netstandard1.3\BrotliSharpLib.xml" />
+    <Content Include="packages\BrotliSharpLib.0.3.3\lib\netstandard2.0\BrotliSharpLib.dll" />
+    <Content Include="packages\BrotliSharpLib.0.3.3\lib\netstandard2.0\BrotliSharpLib.xml" />
+    <Content Include="packages\DotNetSeleniumExtras.PageObjects.3.11.0\lib\net35\SeleniumExtras.PageObjects.dll" />
+    <Content Include="packages\DotNetSeleniumExtras.PageObjects.3.11.0\lib\net40\SeleniumExtras.PageObjects.dll" />
+    <Content Include="packages\DotNetSeleniumExtras.PageObjects.3.11.0\lib\net45\SeleniumExtras.PageObjects.dll" />
+    <Content Include="packages\DotNetSeleniumExtras.PageObjects.3.11.0\lib\netstandard2.0\SeleniumExtras.PageObjects.dll" />
+    <Content Include="packages\DotNetSeleniumExtras.PageObjects.Core.3.12.0\lib\net35\SeleniumExtras.PageObjects.dll" />
+    <Content Include="packages\DotNetSeleniumExtras.PageObjects.Core.3.12.0\lib\net40\SeleniumExtras.PageObjects.dll" />
+    <Content Include="packages\DotNetSeleniumExtras.PageObjects.Core.3.12.0\lib\net45\SeleniumExtras.PageObjects.dll" />
+    <Content Include="packages\DotNetSeleniumExtras.PageObjects.Core.3.12.0\lib\netstandard2.0\SeleniumExtras.PageObjects.dll" />
+    <Content Include="packages\DotNetSeleniumExtras.WaitHelpers.3.11.0\lib\net35\SeleniumExtras.WaitHelpers.dll" />
+    <Content Include="packages\DotNetSeleniumExtras.WaitHelpers.3.11.0\lib\net40\SeleniumExtras.WaitHelpers.dll" />
+    <Content Include="packages\DotNetSeleniumExtras.WaitHelpers.3.11.0\lib\net45\SeleniumExtras.WaitHelpers.dll" />
+    <Content Include="packages\DotNetSeleniumExtras.WaitHelpers.3.11.0\lib\netstandard2.0\SeleniumExtras.WaitHelpers.dll" />
+    <Content Include="packages\DotNetZip.Reduced.1.9.1.8\lib\net20\Ionic.Zip.Reduced.dll" />
+    <Content Include="packages\ExeCutor.1.0.1\lib\netstandard2.0\ExeCutor.dll" />
+    <Content Include="packages\Eyes.Sdk.Core.2.30.0\applitools_nuget_icon.png" />
+    <Content Include="packages\Eyes.Sdk.Core.2.30.0\lib\net452\CssParser.dll" />
+    <Content Include="packages\Eyes.Sdk.Core.2.30.0\lib\net452\Eyes.Sdk.Core.DotNet.dll" />
+    <Content Include="packages\Eyes.Sdk.Core.2.30.0\lib\net452\Eyes.Sdk.DotNet.xml" />
+    <Content Include="packages\Eyes.Sdk.Core.2.30.0\lib\net45\CssParser.dll" />
+    <Content Include="packages\Eyes.Sdk.Core.2.30.0\lib\net45\Eyes.Sdk.Core.DotNet.dll" />
+    <Content Include="packages\Eyes.Sdk.Core.2.30.0\lib\net45\Eyes.Sdk.DotNet.xml" />
+    <Content Include="packages\Eyes.Sdk.Core.2.30.0\lib\net462\CssParser.dll" />
+    <Content Include="packages\Eyes.Sdk.Core.2.30.0\lib\net462\Eyes.Sdk.Core.DotNet.dll" />
+    <Content Include="packages\Eyes.Sdk.Core.2.30.0\lib\net462\Eyes.Sdk.DotNet.xml" />
+    <Content Include="packages\Eyes.Sdk.Core.2.30.0\lib\net472\CssParser.dll" />
+    <Content Include="packages\Eyes.Sdk.Core.2.30.0\lib\net472\Eyes.Sdk.Core.DotNet.dll" />
+    <Content Include="packages\Eyes.Sdk.Core.2.30.0\lib\net472\Eyes.Sdk.DotNet.xml" />
+    <Content Include="packages\Eyes.Sdk.Core.2.30.0\lib\net48\CssParser.dll" />
+    <Content Include="packages\Eyes.Sdk.Core.2.30.0\lib\net48\Eyes.Sdk.Core.DotNet.dll" />
+    <Content Include="packages\Eyes.Sdk.Core.2.30.0\lib\net48\Eyes.Sdk.DotNet.xml" />
+    <Content Include="packages\Eyes.Sdk.Core.2.30.0\lib\netcoreapp2.1\CssParser.dll" />
+    <Content Include="packages\Eyes.Sdk.Core.2.30.0\lib\netcoreapp2.1\Eyes.Sdk.Core.DotNet.dll" />
+    <Content Include="packages\Eyes.Sdk.Core.2.30.0\lib\netcoreapp2.1\Eyes.Sdk.DotNet.xml" />
+    <Content Include="packages\Eyes.Sdk.Core.2.30.0\lib\netcoreapp3.0\CssParser.dll" />
+    <Content Include="packages\Eyes.Sdk.Core.2.30.0\lib\netcoreapp3.0\Eyes.Sdk.Core.DotNet.dll" />
+    <Content Include="packages\Eyes.Sdk.Core.2.30.0\lib\netcoreapp3.0\Eyes.Sdk.DotNet.xml" />
+    <Content Include="packages\Eyes.Sdk.Core.2.30.0\lib\netcoreapp3.1\CssParser.dll" />
+    <Content Include="packages\Eyes.Sdk.Core.2.30.0\lib\netcoreapp3.1\Eyes.Sdk.Core.DotNet.dll" />
+    <Content Include="packages\Eyes.Sdk.Core.2.30.0\lib\netcoreapp3.1\Eyes.Sdk.DotNet.xml" />
+    <Content Include="packages\Eyes.Sdk.Core.2.30.0\lib\netstandard2.0\CssParser.dll" />
+    <Content Include="packages\Eyes.Sdk.Core.2.30.0\lib\netstandard2.0\Eyes.Sdk.Core.DotNet.dll" />
+    <Content Include="packages\Eyes.Sdk.Core.2.30.0\lib\netstandard2.0\Eyes.Sdk.DotNet.xml" />
+    <Content Include="packages\Eyes.Sdk.Core.2.30.0\lib\netstandard2.1\CssParser.dll" />
+    <Content Include="packages\Eyes.Sdk.Core.2.30.0\lib\netstandard2.1\Eyes.Sdk.Core.DotNet.dll" />
+    <Content Include="packages\Eyes.Sdk.Core.2.30.0\lib\netstandard2.1\Eyes.Sdk.DotNet.xml" />
+    <Content Include="packages\Eyes.Sdk.Core.2.30.0\LICENSE.txt" />
+    <Content Include="packages\Eyes.Selenium.2.30.0\applitools_nuget_icon.png" />
+    <Content Include="packages\Eyes.Selenium.2.30.0\lib\net452\CssParser.dll" />
+    <Content Include="packages\Eyes.Selenium.2.30.0\lib\net452\Eyes.Selenium.DotNet.dll" />
+    <Content Include="packages\Eyes.Selenium.2.30.0\lib\net45\CssParser.dll" />
+    <Content Include="packages\Eyes.Selenium.2.30.0\lib\net45\Eyes.Selenium.DotNet.dll" />
+    <Content Include="packages\Eyes.Selenium.2.30.0\lib\net462\CssParser.dll" />
+    <Content Include="packages\Eyes.Selenium.2.30.0\lib\net462\Eyes.Selenium.DotNet.dll" />
+    <Content Include="packages\Eyes.Selenium.2.30.0\lib\net472\CssParser.dll" />
+    <Content Include="packages\Eyes.Selenium.2.30.0\lib\net472\Eyes.Selenium.DotNet.dll" />
+    <Content Include="packages\Eyes.Selenium.2.30.0\lib\net48\CssParser.dll" />
+    <Content Include="packages\Eyes.Selenium.2.30.0\lib\net48\Eyes.Selenium.DotNet.dll" />
+    <Content Include="packages\Eyes.Selenium.2.30.0\lib\netcoreapp2.1\CssParser.dll" />
+    <Content Include="packages\Eyes.Selenium.2.30.0\lib\netcoreapp2.1\Eyes.Selenium.DotNet.dll" />
+    <Content Include="packages\Eyes.Selenium.2.30.0\lib\netcoreapp3.0\CssParser.dll" />
+    <Content Include="packages\Eyes.Selenium.2.30.0\lib\netcoreapp3.0\Eyes.Selenium.DotNet.dll" />
+    <Content Include="packages\Eyes.Selenium.2.30.0\lib\netcoreapp3.1\CssParser.dll" />
+    <Content Include="packages\Eyes.Selenium.2.30.0\lib\netcoreapp3.1\Eyes.Selenium.DotNet.dll" />
+    <Content Include="packages\Eyes.Selenium.2.30.0\lib\netstandard2.0\CssParser.dll" />
+    <Content Include="packages\Eyes.Selenium.2.30.0\lib\netstandard2.0\Eyes.Selenium.DotNet.dll" />
+    <Content Include="packages\Eyes.Selenium.2.30.0\lib\netstandard2.1\CssParser.dll" />
+    <Content Include="packages\Eyes.Selenium.2.30.0\lib\netstandard2.1\Eyes.Selenium.DotNet.dll" />
+    <Content Include="packages\Eyes.Selenium.2.30.0\LICENSE.txt" />
+    <Content Include="packages\G1ANT.Language.4.106.2\lib\net452\G1ANT.Language.dll" />
+    <Content Include="packages\HtmlAgilityPack.1.11.24\lib\Net35\HtmlAgilityPack.dll" />
+    <Content Include="packages\HtmlAgilityPack.1.11.24\lib\Net35\HtmlAgilityPack.pdb" />
+    <Content Include="packages\HtmlAgilityPack.1.11.24\lib\Net35\HtmlAgilityPack.xml" />
+    <Content Include="packages\HtmlAgilityPack.1.11.24\lib\Net40-client\HtmlAgilityPack.dll" />
+    <Content Include="packages\HtmlAgilityPack.1.11.24\lib\Net40-client\HtmlAgilityPack.pdb" />
+    <Content Include="packages\HtmlAgilityPack.1.11.24\lib\Net40-client\HtmlAgilityPack.xml" />
+    <Content Include="packages\HtmlAgilityPack.1.11.24\lib\Net40\HtmlAgilityPack.dll" />
+    <Content Include="packages\HtmlAgilityPack.1.11.24\lib\Net40\HtmlAgilityPack.pdb" />
+    <Content Include="packages\HtmlAgilityPack.1.11.24\lib\Net40\HtmlAgilityPack.XML" />
+    <Content Include="packages\HtmlAgilityPack.1.11.24\lib\Net45\HtmlAgilityPack.dll" />
+    <Content Include="packages\HtmlAgilityPack.1.11.24\lib\Net45\HtmlAgilityPack.pdb" />
+    <Content Include="packages\HtmlAgilityPack.1.11.24\lib\Net45\HtmlAgilityPack.XML" />
+    <Content Include="packages\HtmlAgilityPack.1.11.24\lib\NetCore45\HtmlAgilityPack.dll" />
+    <Content Include="packages\HtmlAgilityPack.1.11.24\lib\NetCore45\HtmlAgilityPack.pdb" />
+    <Content Include="packages\HtmlAgilityPack.1.11.24\lib\NetCore45\HtmlAgilityPack.XML" />
+    <Content Include="packages\HtmlAgilityPack.1.11.24\lib\netstandard1.3\HtmlAgilityPack.dll" />
+    <Content Include="packages\HtmlAgilityPack.1.11.24\lib\netstandard1.3\HtmlAgilityPack.pdb" />
+    <Content Include="packages\HtmlAgilityPack.1.11.24\lib\netstandard1.3\HtmlAgilityPack.xml" />
+    <Content Include="packages\HtmlAgilityPack.1.11.24\lib\netstandard1.6\HtmlAgilityPack.dll" />
+    <Content Include="packages\HtmlAgilityPack.1.11.24\lib\netstandard1.6\HtmlAgilityPack.pdb" />
+    <Content Include="packages\HtmlAgilityPack.1.11.24\lib\netstandard1.6\HtmlAgilityPack.xml" />
+    <Content Include="packages\HtmlAgilityPack.1.11.24\lib\netstandard2.0\HtmlAgilityPack.dll" />
+    <Content Include="packages\HtmlAgilityPack.1.11.24\lib\netstandard2.0\HtmlAgilityPack.pdb" />
+    <Content Include="packages\HtmlAgilityPack.1.11.24\lib\netstandard2.0\HtmlAgilityPack.xml" />
+    <Content Include="packages\HtmlAgilityPack.1.11.24\lib\portable-net45+netcore45+wp8+MonoAndroid+MonoTouch\HtmlAgilityPack.dll" />
+    <Content Include="packages\HtmlAgilityPack.1.11.24\lib\portable-net45+netcore45+wp8+MonoAndroid+MonoTouch\HtmlAgilityPack.pdb" />
+    <Content Include="packages\HtmlAgilityPack.1.11.24\lib\portable-net45+netcore45+wp8+MonoAndroid+MonoTouch\HtmlAgilityPack.XML" />
+    <Content Include="packages\HtmlAgilityPack.1.11.24\lib\portable-net45+netcore45+wpa81+wp8+MonoAndroid+MonoTouch\HtmlAgilityPack.dll" />
+    <Content Include="packages\HtmlAgilityPack.1.11.24\lib\portable-net45+netcore45+wpa81+wp8+MonoAndroid+MonoTouch\HtmlAgilityPack.pdb" />
+    <Content Include="packages\HtmlAgilityPack.1.11.24\lib\portable-net45+netcore45+wpa81+wp8+MonoAndroid+MonoTouch\HtmlAgilityPack.XML" />
+    <Content Include="packages\HtmlAgilityPack.1.11.24\lib\uap10.0\HtmlAgilityPack.dll" />
+    <Content Include="packages\HtmlAgilityPack.1.11.24\lib\uap10.0\HtmlAgilityPack.pdb" />
+    <Content Include="packages\HtmlAgilityPack.1.11.24\lib\uap10.0\HtmlAgilityPack.XML" />
+    <Content Include="packages\MailKit.2.8.0\icons\mailkit-50.png" />
+    <Content Include="packages\MailKit.2.8.0\lib\net45\MailKit.dll" />
+    <Content Include="packages\MailKit.2.8.0\lib\net45\MailKit.pdb" />
+    <Content Include="packages\MailKit.2.8.0\lib\net45\MailKit.xml" />
+    <Content Include="packages\MailKit.2.8.0\lib\net46\MailKit.dll" />
+    <Content Include="packages\MailKit.2.8.0\lib\net46\MailKit.pdb" />
+    <Content Include="packages\MailKit.2.8.0\lib\net46\MailKit.xml" />
+    <Content Include="packages\MailKit.2.8.0\lib\net47\MailKit.dll" />
+    <Content Include="packages\MailKit.2.8.0\lib\net47\MailKit.pdb" />
+    <Content Include="packages\MailKit.2.8.0\lib\net47\MailKit.xml" />
+    <Content Include="packages\MailKit.2.8.0\lib\net48\MailKit.dll" />
+    <Content Include="packages\MailKit.2.8.0\lib\net48\MailKit.pdb" />
+    <Content Include="packages\MailKit.2.8.0\lib\net48\MailKit.xml" />
+    <Content Include="packages\MailKit.2.8.0\lib\netstandard1.3\MailKit.dll" />
+    <Content Include="packages\MailKit.2.8.0\lib\netstandard1.3\MailKit.pdb" />
+    <Content Include="packages\MailKit.2.8.0\lib\netstandard1.3\MailKit.xml" />
+    <Content Include="packages\MailKit.2.8.0\lib\netstandard1.6\MailKit.dll" />
+    <Content Include="packages\MailKit.2.8.0\lib\netstandard1.6\MailKit.pdb" />
+    <Content Include="packages\MailKit.2.8.0\lib\netstandard1.6\MailKit.xml" />
+    <Content Include="packages\MailKit.2.8.0\lib\netstandard2.0\MailKit.dll" />
+    <Content Include="packages\MailKit.2.8.0\lib\netstandard2.0\MailKit.pdb" />
+    <Content Include="packages\MailKit.2.8.0\lib\netstandard2.0\MailKit.xml" />
+    <Content Include="packages\MediatR.8.0.2\gradient_128x128.png" />
+    <Content Include="packages\MediatR.8.0.2\lib\net461\MediatR.dll" />
+    <Content Include="packages\MediatR.8.0.2\lib\net461\MediatR.xml" />
+    <Content Include="packages\MediatR.8.0.2\lib\netstandard2.0\MediatR.dll" />
+    <Content Include="packages\MediatR.8.0.2\lib\netstandard2.0\MediatR.xml" />
+    <Content Include="packages\MediatR.8.0.2\lib\netstandard2.1\MediatR.dll" />
+    <Content Include="packages\MediatR.8.0.2\lib\netstandard2.1\MediatR.xml" />
+    <Content Include="packages\Microsoft.Edge.SeleniumTools.3.141.2\lib\net35\Microsoft.Edge.SeleniumTools.dll" />
+    <Content Include="packages\Microsoft.Edge.SeleniumTools.3.141.2\lib\net40\Microsoft.Edge.SeleniumTools.dll" />
+    <Content Include="packages\Microsoft.Edge.SeleniumTools.3.141.2\lib\net45\Microsoft.Edge.SeleniumTools.dll" />
+    <Content Include="packages\Microsoft.Edge.SeleniumTools.3.141.2\lib\netstandard2.0\Microsoft.Edge.SeleniumTools.dll" />
+    <Content Include="packages\MimeKit.2.9.1\icons\mimekit-50.png" />
+    <Content Include="packages\MimeKit.2.9.1\lib\net45\MimeKit.dll" />
+    <Content Include="packages\MimeKit.2.9.1\lib\net45\MimeKit.pdb" />
+    <Content Include="packages\MimeKit.2.9.1\lib\net45\MimeKit.xml" />
+    <Content Include="packages\MimeKit.2.9.1\lib\net46\MimeKit.dll" />
+    <Content Include="packages\MimeKit.2.9.1\lib\net46\MimeKit.pdb" />
+    <Content Include="packages\MimeKit.2.9.1\lib\net46\MimeKit.xml" />
+    <Content Include="packages\MimeKit.2.9.1\lib\net47\MimeKit.dll" />
+    <Content Include="packages\MimeKit.2.9.1\lib\net47\MimeKit.pdb" />
+    <Content Include="packages\MimeKit.2.9.1\lib\net47\MimeKit.xml" />
+    <Content Include="packages\MimeKit.2.9.1\lib\net48\MimeKit.dll" />
+    <Content Include="packages\MimeKit.2.9.1\lib\net48\MimeKit.pdb" />
+    <Content Include="packages\MimeKit.2.9.1\lib\net48\MimeKit.xml" />
+    <Content Include="packages\MimeKit.2.9.1\lib\netstandard1.3\MimeKit.dll" />
+    <Content Include="packages\MimeKit.2.9.1\lib\netstandard1.3\MimeKit.pdb" />
+    <Content Include="packages\MimeKit.2.9.1\lib\netstandard1.3\MimeKit.xml" />
+    <Content Include="packages\MimeKit.2.9.1\lib\netstandard1.6\MimeKit.dll" />
+    <Content Include="packages\MimeKit.2.9.1\lib\netstandard1.6\MimeKit.pdb" />
+    <Content Include="packages\MimeKit.2.9.1\lib\netstandard1.6\MimeKit.xml" />
+    <Content Include="packages\MimeKit.2.9.1\lib\netstandard2.0\MimeKit.dll" />
+    <Content Include="packages\MimeKit.2.9.1\lib\netstandard2.0\MimeKit.pdb" />
+    <Content Include="packages\MimeKit.2.9.1\lib\netstandard2.0\MimeKit.xml" />
+    <Content Include="packages\Newtonsoft.Json.12.0.3\lib\net20\Newtonsoft.Json.dll" />
+    <Content Include="packages\Newtonsoft.Json.12.0.3\lib\net20\Newtonsoft.Json.xml" />
+    <Content Include="packages\Newtonsoft.Json.12.0.3\lib\net35\Newtonsoft.Json.dll" />
+    <Content Include="packages\Newtonsoft.Json.12.0.3\lib\net35\Newtonsoft.Json.xml" />
+    <Content Include="packages\Newtonsoft.Json.12.0.3\lib\net40\Newtonsoft.Json.dll" />
+    <Content Include="packages\Newtonsoft.Json.12.0.3\lib\net40\Newtonsoft.Json.xml" />
+    <Content Include="packages\Newtonsoft.Json.12.0.3\lib\net45\Newtonsoft.Json.dll" />
+    <Content Include="packages\Newtonsoft.Json.12.0.3\lib\net45\Newtonsoft.Json.xml" />
+    <Content Include="packages\Newtonsoft.Json.12.0.3\lib\netstandard1.0\Newtonsoft.Json.dll" />
+    <Content Include="packages\Newtonsoft.Json.12.0.3\lib\netstandard1.0\Newtonsoft.Json.xml" />
+    <Content Include="packages\Newtonsoft.Json.12.0.3\lib\netstandard1.3\Newtonsoft.Json.dll" />
+    <Content Include="packages\Newtonsoft.Json.12.0.3\lib\netstandard1.3\Newtonsoft.Json.xml" />
+    <Content Include="packages\Newtonsoft.Json.12.0.3\lib\netstandard2.0\Newtonsoft.Json.dll" />
+    <Content Include="packages\Newtonsoft.Json.12.0.3\lib\netstandard2.0\Newtonsoft.Json.xml" />
+    <Content Include="packages\Newtonsoft.Json.12.0.3\lib\portable-net40+sl5+win8+wp8+wpa81\Newtonsoft.Json.dll" />
+    <Content Include="packages\Newtonsoft.Json.12.0.3\lib\portable-net40+sl5+win8+wp8+wpa81\Newtonsoft.Json.xml" />
+    <Content Include="packages\Newtonsoft.Json.12.0.3\lib\portable-net45+win8+wp8+wpa81\Newtonsoft.Json.dll" />
+    <Content Include="packages\Newtonsoft.Json.12.0.3\lib\portable-net45+win8+wp8+wpa81\Newtonsoft.Json.xml" />
+    <Content Include="packages\Newtonsoft.Json.12.0.3\packageIcon.png" />
+    <Content Include="packages\NLog.4.7.2\lib\monoandroid44\NLog.dll" />
+    <Content Include="packages\NLog.4.7.2\lib\monoandroid44\NLog.xml" />
+    <Content Include="packages\NLog.4.7.2\lib\net35\NLog.dll" />
+    <Content Include="packages\NLog.4.7.2\lib\net35\NLog.xml" />
+    <Content Include="packages\NLog.4.7.2\lib\net40-client\NLog.dll" />
+    <Content Include="packages\NLog.4.7.2\lib\net40-client\NLog.xml" />
+    <Content Include="packages\NLog.4.7.2\lib\net45\NLog.dll" />
+    <Content Include="packages\NLog.4.7.2\lib\net45\NLog.xml" />
+    <Content Include="packages\NLog.4.7.2\lib\netstandard1.3\NLog.dll" />
+    <Content Include="packages\NLog.4.7.2\lib\netstandard1.3\NLog.xml" />
+    <Content Include="packages\NLog.4.7.2\lib\netstandard1.5\NLog.dll" />
+    <Content Include="packages\NLog.4.7.2\lib\netstandard1.5\NLog.xml" />
+    <Content Include="packages\NLog.4.7.2\lib\netstandard2.0\NLog.dll" />
+    <Content Include="packages\NLog.4.7.2\lib\netstandard2.0\NLog.xml" />
+    <Content Include="packages\NLog.4.7.2\lib\sl4\NLog.dll" />
+    <Content Include="packages\NLog.4.7.2\lib\sl4\NLog.xml" />
+    <Content Include="packages\NLog.4.7.2\lib\sl5\NLog.dll" />
+    <Content Include="packages\NLog.4.7.2\lib\sl5\NLog.xml" />
+    <Content Include="packages\NLog.4.7.2\lib\wp8\NLog.dll" />
+    <Content Include="packages\NLog.4.7.2\lib\wp8\NLog.xml" />
+    <Content Include="packages\NLog.4.7.2\lib\xamarinios10\NLog.dll" />
+    <Content Include="packages\NLog.4.7.2\lib\xamarinios10\NLog.xml" />
+    <Content Include="packages\NSpectator.Selenium.0.9.9\lib\OpenQA.Selenite.dll" />
+    <Content Include="packages\NSpectator.Selenium.0.9.9\license.txt" />
+    <Content Include="packages\NuGet.CommandLine.5.6.0\tools\NuGet.exe" />
+    <Content Include="packages\NuGet.CommandLine.5.6.0\tools\NuGet.pdb" />
+    <Content Include="packages\OpenQA.Selenium.Winium.1.0.0.4\lib\OpenQA.Selenium.Winium.dll" />
+    <Content Include="packages\OpenQA.Selenium.Winium.1.0.0.4\lib\OpenQA.Selenium.Winium.pdb" />
+    <Content Include="packages\OpenQA.Selenium.Winium.1.0.0.4\license\license.txt" />
+    <Content Include="packages\Portable.BouncyCastle.1.8.6.7\lib\net40\BouncyCastle.Crypto.dll" />
+    <Content Include="packages\Portable.BouncyCastle.1.8.6.7\lib\net40\BouncyCastle.Crypto.xml" />
+    <Content Include="packages\Portable.BouncyCastle.1.8.6.7\lib\netstandard2.0\BouncyCastle.Crypto.dll" />
+    <Content Include="packages\Portable.BouncyCastle.1.8.6.7\lib\netstandard2.0\BouncyCastle.Crypto.xml" />
+    <Content Include="packages\Selenium.Axe.1.5.2\lib\net45\Selenium.Axe.dll" />
+    <Content Include="packages\Selenium.Axe.1.5.2\lib\net471\Selenium.Axe.dll" />
+    <Content Include="packages\Selenium.Axe.1.5.2\lib\netstandard2.0\Selenium.Axe.dll" />
+    <Content Include="packages\Selenium.Chrome.WebDriver.83.0.0\driver\chromedriver.exe" />
+    <Content Include="packages\Selenium.Firefox.WebDriver.0.26.0\driver\geckodriver.exe" />
+    <Content Include="packages\Selenium.Microsoft.Webdriver2.2.0.10586.1\content\Readme.txt" />
+    <Content Include="packages\Selenium.Microsoft.Webdriver2.2.0.10586.1\Driver\MicrosoftWebDriver.exe" />
+    <Content Include="packages\Selenium.PhantomJS.WebDriver.2.1.1\driver\phantomjs.exe" />
+    <Content Include="packages\Selenium.RC.3.1.0\lib\net35\ThoughtWorks.Selenium.Core.dll" />
+    <Content Include="packages\Selenium.RC.3.1.0\lib\net35\ThoughtWorks.Selenium.Core.xml" />
+    <Content Include="packages\Selenium.RC.3.1.0\lib\net40\ThoughtWorks.Selenium.Core.dll" />
+    <Content Include="packages\Selenium.RC.3.1.0\lib\net40\ThoughtWorks.Selenium.Core.xml" />
+    <Content Include="packages\Selenium.Support.3.141.0\lib\net35\WebDriver.Support.dll" />
+    <Content Include="packages\Selenium.Support.3.141.0\lib\net35\WebDriver.Support.xml" />
+    <Content Include="packages\Selenium.Support.3.141.0\lib\net40\WebDriver.Support.dll" />
+    <Content Include="packages\Selenium.Support.3.141.0\lib\net40\WebDriver.Support.xml" />
+    <Content Include="packages\Selenium.Support.3.141.0\lib\net45\WebDriver.Support.dll" />
+    <Content Include="packages\Selenium.Support.3.141.0\lib\net45\WebDriver.Support.xml" />
+    <Content Include="packages\Selenium.Support.3.141.0\lib\netstandard2.0\WebDriver.Support.dll" />
+    <Content Include="packages\Selenium.Support.3.141.0\lib\netstandard2.0\WebDriver.Support.xml" />
+    <Content Include="packages\Selenium.WebDriver.3.141.0\lib\net35\WebDriver.dll" />
+    <Content Include="packages\Selenium.WebDriver.3.141.0\lib\net35\WebDriver.xml" />
+    <Content Include="packages\Selenium.WebDriver.3.141.0\lib\net40\WebDriver.dll" />
+    <Content Include="packages\Selenium.WebDriver.3.141.0\lib\net40\WebDriver.xml" />
+    <Content Include="packages\Selenium.WebDriver.3.141.0\lib\net45\WebDriver.dll" />
+    <Content Include="packages\Selenium.WebDriver.3.141.0\lib\net45\WebDriver.xml" />
+    <Content Include="packages\Selenium.WebDriver.3.141.0\lib\netstandard2.0\WebDriver.dll" />
+    <Content Include="packages\Selenium.WebDriver.3.141.0\lib\netstandard2.0\WebDriver.xml" />
+    <Content Include="packages\Selenium.WebDriver.ChromeDriver.83.0.4103.3910\driver\win32\chromedriver.exe" />
+    <Content Include="packages\Selenium.WebDriver.ChromeDriver.83.0.4103.3910\nupkg-icon.png" />
+    <Content Include="packages\Selenium.WebDriver.Extensions.3.3.0\lib\net40\Selenium.WebDriver.Extensions.dll" />
+    <Content Include="packages\Selenium.WebDriver.Extensions.3.3.0\lib\net40\Selenium.WebDriver.Extensions.xml" />
+    <Content Include="packages\Selenium.WebDriver.Extensions.3.3.0\lib\netstandard2.0\Selenium.WebDriver.Extensions.dll" />
+    <Content Include="packages\Selenium.WebDriver.Extensions.3.3.0\lib\netstandard2.0\Selenium.WebDriver.Extensions.xml" />
+    <Content Include="packages\Selenium.WebDriver.GeckoDriver.0.26.0.3\driver\win32\geckodriver.exe" />
+    <Content Include="packages\Selenium.WebDriver.GeckoDriver.0.26.0.3\driver\win64\geckodriver.exe" />
+    <Content Include="packages\Selenium.WebDriver.GeckoDriver.0.26.0.3\nupkg-icon.png" />
+    <Content Include="packages\Selenium.WebDriver.GeckoDriver.Win64.0.26.0.3\driver\geckodriver.exe" />
+    <Content Include="packages\Selenium.WebDriver.GeckoDriver.Win64.0.26.0.3\nupkg-icon.png" />
+    <Content Include="packages\Selenium.WebDriver.IEDriver.3.150.1.1\driver\IEDriverServer.exe" />
+    <Content Include="packages\Selenium.WebDriver.IEDriver.3.150.1.1\nupkg-icon.png" />
+    <Content Include="packages\Selenium.WebDriver.MicrosoftDriver.17.17134.0\driver\MicrosoftWebDriver.exe" />
+    <Content Include="packages\Selenium.WebDriver.MicrosoftWebDriver.10.0.17134\driver\MicrosoftWebDriver.exe" />
+    <Content Include="packages\Selenium.WebDriver.MSEdgeDriver.83.0.478.58\driver\win32\msedgedriver.exe" />
+    <Content Include="packages\Selenium.WebDriver.MSEdgeDriver.83.0.478.58\driver\win64\msedgedriver.exe" />
+    <Content Include="packages\Selenium.WebDriver.MSEdgeDriver.83.0.478.58\license\license.txt" />
+    <Content Include="packages\Selenium.WebDriver.PhantomJS.1.0.0.0\driver\phantomjs.exe" />
+    <Content Include="packages\Selenium.WebDriver.PhantomJS.Xplatform.2.45.0.1\lib\net40\Ionic.Zip.dll" />
+    <Content Include="packages\Selenium.WebDriver.PhantomJS.Xplatform.2.45.0.1\lib\net40\Newtonsoft.Json.dll" />
+    <Content Include="packages\Selenium.WebDriver.PhantomJS.Xplatform.2.45.0.1\lib\net40\WebDriver.dll" />
+    <Content Include="packages\Selenium.WebDriver.PhantomJS.Xplatform.2.45.0.1\lib\net40\WebDriver.xml" />
+    <Content Include="packages\Selenium.WebDriver.WaitExtensions.2.0.0\lib\netstandard2.0\Selenium.WebDriver.WaitExtensions.dll" />
+    <Content Include="packages\Selenium.WebDriverBackedSelenium.3.141.0\lib\net35\Selenium.WebDriverBackedSelenium.dll" />
+    <Content Include="packages\Selenium.WebDriverBackedSelenium.3.141.0\lib\net35\Selenium.WebDriverBackedSelenium.xml" />
+    <Content Include="packages\Selenium.WebDriverBackedSelenium.3.141.0\lib\net40\Selenium.WebDriverBackedSelenium.dll" />
+    <Content Include="packages\Selenium.WebDriverBackedSelenium.3.141.0\lib\net40\Selenium.WebDriverBackedSelenium.xml" />
+    <Content Include="packages\Selenium.WebDriverBackedSelenium.3.141.0\lib\net45\Selenium.WebDriverBackedSelenium.dll" />
+    <Content Include="packages\Selenium.WebDriverBackedSelenium.3.141.0\lib\net45\Selenium.WebDriverBackedSelenium.xml" />
+    <Content Include="packages\Selenium.WebDriverBackedSelenium.3.141.0\lib\netstandard2.0\Selenium.WebDriverBackedSelenium.dll" />
+    <Content Include="packages\Selenium.WebDriverBackedSelenium.3.141.0\lib\netstandard2.0\Selenium.WebDriverBackedSelenium.xml" />
+    <Content Include="packages\System.Runtime.4.3.1\dotnet_library_license.txt" />
+    <Content Include="packages\System.Runtime.4.3.1\lib\net462\System.Runtime.dll" />
+    <Content Include="packages\System.Runtime.4.3.1\ref\net462\System.Runtime.dll" />
+    <Content Include="packages\System.Runtime.4.3.1\ref\netcore50\de\System.Runtime.xml" />
+    <Content Include="packages\System.Runtime.4.3.1\ref\netcore50\es\System.Runtime.xml" />
+    <Content Include="packages\System.Runtime.4.3.1\ref\netcore50\fr\System.Runtime.xml" />
+    <Content Include="packages\System.Runtime.4.3.1\ref\netcore50\it\System.Runtime.xml" />
+    <Content Include="packages\System.Runtime.4.3.1\ref\netcore50\ja\System.Runtime.xml" />
+    <Content Include="packages\System.Runtime.4.3.1\ref\netcore50\ko\System.Runtime.xml" />
+    <Content Include="packages\System.Runtime.4.3.1\ref\netcore50\ru\System.Runtime.xml" />
+    <Content Include="packages\System.Runtime.4.3.1\ref\netcore50\System.Runtime.dll" />
+    <Content Include="packages\System.Runtime.4.3.1\ref\netcore50\System.Runtime.xml" />
+    <Content Include="packages\System.Runtime.4.3.1\ref\netcore50\zh-hans\System.Runtime.xml" />
+    <Content Include="packages\System.Runtime.4.3.1\ref\netcore50\zh-hant\System.Runtime.xml" />
+    <Content Include="packages\System.Runtime.4.3.1\ref\netstandard1.0\de\System.Runtime.xml" />
+    <Content Include="packages\System.Runtime.4.3.1\ref\netstandard1.0\es\System.Runtime.xml" />
+    <Content Include="packages\System.Runtime.4.3.1\ref\netstandard1.0\fr\System.Runtime.xml" />
+    <Content Include="packages\System.Runtime.4.3.1\ref\netstandard1.0\it\System.Runtime.xml" />
+    <Content Include="packages\System.Runtime.4.3.1\ref\netstandard1.0\ja\System.Runtime.xml" />
+    <Content Include="packages\System.Runtime.4.3.1\ref\netstandard1.0\ko\System.Runtime.xml" />
+    <Content Include="packages\System.Runtime.4.3.1\ref\netstandard1.0\ru\System.Runtime.xml" />
+    <Content Include="packages\System.Runtime.4.3.1\ref\netstandard1.0\System.Runtime.dll" />
+    <Content Include="packages\System.Runtime.4.3.1\ref\netstandard1.0\System.Runtime.xml" />
+    <Content Include="packages\System.Runtime.4.3.1\ref\netstandard1.0\zh-hans\System.Runtime.xml" />
+    <Content Include="packages\System.Runtime.4.3.1\ref\netstandard1.0\zh-hant\System.Runtime.xml" />
+    <Content Include="packages\System.Runtime.4.3.1\ref\netstandard1.2\de\System.Runtime.xml" />
+    <Content Include="packages\System.Runtime.4.3.1\ref\netstandard1.2\es\System.Runtime.xml" />
+    <Content Include="packages\System.Runtime.4.3.1\ref\netstandard1.2\fr\System.Runtime.xml" />
+    <Content Include="packages\System.Runtime.4.3.1\ref\netstandard1.2\it\System.Runtime.xml" />
+    <Content Include="packages\System.Runtime.4.3.1\ref\netstandard1.2\ja\System.Runtime.xml" />
+    <Content Include="packages\System.Runtime.4.3.1\ref\netstandard1.2\ko\System.Runtime.xml" />
+    <Content Include="packages\System.Runtime.4.3.1\ref\netstandard1.2\ru\System.Runtime.xml" />
+    <Content Include="packages\System.Runtime.4.3.1\ref\netstandard1.2\System.Runtime.dll" />
+    <Content Include="packages\System.Runtime.4.3.1\ref\netstandard1.2\System.Runtime.xml" />
+    <Content Include="packages\System.Runtime.4.3.1\ref\netstandard1.2\zh-hans\System.Runtime.xml" />
+    <Content Include="packages\System.Runtime.4.3.1\ref\netstandard1.2\zh-hant\System.Runtime.xml" />
+    <Content Include="packages\System.Runtime.4.3.1\ref\netstandard1.3\de\System.Runtime.xml" />
+    <Content Include="packages\System.Runtime.4.3.1\ref\netstandard1.3\es\System.Runtime.xml" />
+    <Content Include="packages\System.Runtime.4.3.1\ref\netstandard1.3\fr\System.Runtime.xml" />
+    <Content Include="packages\System.Runtime.4.3.1\ref\netstandard1.3\it\System.Runtime.xml" />
+    <Content Include="packages\System.Runtime.4.3.1\ref\netstandard1.3\ja\System.Runtime.xml" />
+    <Content Include="packages\System.Runtime.4.3.1\ref\netstandard1.3\ko\System.Runtime.xml" />
+    <Content Include="packages\System.Runtime.4.3.1\ref\netstandard1.3\ru\System.Runtime.xml" />
+    <Content Include="packages\System.Runtime.4.3.1\ref\netstandard1.3\System.Runtime.dll" />
+    <Content Include="packages\System.Runtime.4.3.1\ref\netstandard1.3\System.Runtime.xml" />
+    <Content Include="packages\System.Runtime.4.3.1\ref\netstandard1.3\zh-hans\System.Runtime.xml" />
+    <Content Include="packages\System.Runtime.4.3.1\ref\netstandard1.3\zh-hant\System.Runtime.xml" />
+    <Content Include="packages\System.Runtime.4.3.1\ref\netstandard1.5\de\System.Runtime.xml" />
+    <Content Include="packages\System.Runtime.4.3.1\ref\netstandard1.5\es\System.Runtime.xml" />
+    <Content Include="packages\System.Runtime.4.3.1\ref\netstandard1.5\fr\System.Runtime.xml" />
+    <Content Include="packages\System.Runtime.4.3.1\ref\netstandard1.5\it\System.Runtime.xml" />
+    <Content Include="packages\System.Runtime.4.3.1\ref\netstandard1.5\ja\System.Runtime.xml" />
+    <Content Include="packages\System.Runtime.4.3.1\ref\netstandard1.5\ko\System.Runtime.xml" />
+    <Content Include="packages\System.Runtime.4.3.1\ref\netstandard1.5\ru\System.Runtime.xml" />
+    <Content Include="packages\System.Runtime.4.3.1\ref\netstandard1.5\System.Runtime.dll" />
+    <Content Include="packages\System.Runtime.4.3.1\ref\netstandard1.5\System.Runtime.xml" />
+    <Content Include="packages\System.Runtime.4.3.1\ref\netstandard1.5\zh-hans\System.Runtime.xml" />
+    <Content Include="packages\System.Runtime.4.3.1\ref\netstandard1.5\zh-hant\System.Runtime.xml" />
+    <Content Include="packages\System.Runtime.4.3.1\ThirdPartyNotices.txt" />
+    <Content Include="packages\System.Runtime.CompilerServices.Unsafe.4.7.1\Icon.png" />
+    <Content Include="packages\System.Runtime.CompilerServices.Unsafe.4.7.1\lib\net461\System.Runtime.CompilerServices.Unsafe.dll" />
+    <Content Include="packages\System.Runtime.CompilerServices.Unsafe.4.7.1\lib\net461\System.Runtime.CompilerServices.Unsafe.xml" />
+    <Content Include="packages\System.Runtime.CompilerServices.Unsafe.4.7.1\lib\netcoreapp2.0\System.Runtime.CompilerServices.Unsafe.dll" />
+    <Content Include="packages\System.Runtime.CompilerServices.Unsafe.4.7.1\lib\netcoreapp2.0\System.Runtime.CompilerServices.Unsafe.xml" />
+    <Content Include="packages\System.Runtime.CompilerServices.Unsafe.4.7.1\lib\netstandard1.0\System.Runtime.CompilerServices.Unsafe.dll" />
+    <Content Include="packages\System.Runtime.CompilerServices.Unsafe.4.7.1\lib\netstandard1.0\System.Runtime.CompilerServices.Unsafe.xml" />
+    <Content Include="packages\System.Runtime.CompilerServices.Unsafe.4.7.1\lib\netstandard2.0\System.Runtime.CompilerServices.Unsafe.dll" />
+    <Content Include="packages\System.Runtime.CompilerServices.Unsafe.4.7.1\lib\netstandard2.0\System.Runtime.CompilerServices.Unsafe.xml" />
+    <Content Include="packages\System.Runtime.CompilerServices.Unsafe.4.7.1\LICENSE.TXT" />
+    <Content Include="packages\System.Runtime.CompilerServices.Unsafe.4.7.1\ref\net461\System.Runtime.CompilerServices.Unsafe.dll" />
+    <Content Include="packages\System.Runtime.CompilerServices.Unsafe.4.7.1\ref\net461\System.Runtime.CompilerServices.Unsafe.xml" />
+    <Content Include="packages\System.Runtime.CompilerServices.Unsafe.4.7.1\ref\netstandard1.0\System.Runtime.CompilerServices.Unsafe.dll" />
+    <Content Include="packages\System.Runtime.CompilerServices.Unsafe.4.7.1\ref\netstandard1.0\System.Runtime.CompilerServices.Unsafe.xml" />
+    <Content Include="packages\System.Runtime.CompilerServices.Unsafe.4.7.1\ref\netstandard2.0\System.Runtime.CompilerServices.Unsafe.dll" />
+    <Content Include="packages\System.Runtime.CompilerServices.Unsafe.4.7.1\ref\netstandard2.0\System.Runtime.CompilerServices.Unsafe.xml" />
+    <Content Include="packages\System.Runtime.CompilerServices.Unsafe.4.7.1\THIRD-PARTY-NOTICES.TXT" />
+    <Content Include="packages\System.Runtime.CompilerServices.Unsafe.4.7.1\useSharedDesignerContext.txt" />
+    <Content Include="packages\System.Runtime.CompilerServices.Unsafe.4.7.1\version.txt" />
+    <Content Include="packages\WebDriver.Extensions.1.0.0\lib\netstandard2.0\WebDriver.Extensions.dll" />
+    <Content Include="Resources\chromedriver.exe" />
+    <Content Include="Resources\geckodriver.exe" />
+    <Content Include="Resources\IEDriverServer.exe" />
+    <Content Include="Resources\image36.png" />
+    <Content Include="Resources\MicrosoftWebDriver.exe" />
+  </ItemGroup>
+  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+  <PropertyGroup>
+    <PreBuildEvent>
+    </PreBuildEvent>
+  </PropertyGroup>
+  <PropertyGroup>
+    <PostBuildEvent>
+      @ECHO OFF
+      IF $(ConfigurationName) EQU Release (
+        ECHO Copying file into $(registry:HKEY_CURRENT_USER\Software\Microsoft\Windows\CurrentVersion\Explorer\User Shell Folders@Personal)\G1ANT.Robot\Add-On\$(TargetFileName)
+        REM ( TYPE nul &gt;&gt; "$(registry:HKEY_CURRENT_USER\Software\Microsoft\Windows\CurrentVersion\Explorer\User Shell Folders@Personal)\G1ANT.Robot\Add-On\$(TargetFileName)" ) 2&gt;nul || GOTO :error
+        XCOPY "$(TargetPath)" "$(registry:HKEY_CURRENT_USER\Software\Microsoft\Windows\CurrentVersion\Explorer\User Shell Folders@Personal)\G1ANT.Robot\Add-On" /y /Q
+        IF %errorlevel% NEQ 0 GOTO error
+      ) ELSE (
+        ECHO If you want to see your Addon in the G1ANT.Studio, you should
+        ECHO Copy file '$(TargetPath)'
+        ECHO Into '$(registry:HKEY_CURRENT_USER\Software\Microsoft\Windows\CurrentVersion\Explorer\User Shell Folders@Personal)\G1ANT.Robot\Add-On\$(TargetFileName)'
+        ECHO or build in release environment
+      )
+      GOTO :eof
+      :error
+      ECHO Please close G1ANT.Robot.exe before build
+    </PostBuildEvent>
+  </PropertyGroup>
+  <Import Project="..\packages\Selenium.Chrome.WebDriver.83.0.0\build\Selenium.Chrome.WebDriver.targets" Condition="Exists('..\packages\Selenium.Chrome.WebDriver.83.0.0\build\Selenium.Chrome.WebDriver.targets')" />
+  <Target Name="EnsureNuGetPackageBuildImports" BeforeTargets="PrepareForBuild">
+    <PropertyGroup>
+      <ErrorText>This project references NuGet package(s) that are missing on this computer. Use NuGet Package Restore to download them.  For more information, see http://go.microsoft.com/fwlink/?LinkID=322105. The missing file is {0}.</ErrorText>
+    </PropertyGroup>
+    <Error Condition="!Exists('..\packages\Selenium.Chrome.WebDriver.83.0.0\build\Selenium.Chrome.WebDriver.targets')" Text="$([System.String]::Format('$(ErrorText)', '..\packages\Selenium.Chrome.WebDriver.83.0.0\build\Selenium.Chrome.WebDriver.targets'))" />
+    <Error Condition="!Exists('..\packages\Selenium.WebDriver.MicrosoftWebDriver.10.0.17134\build\Selenium.WebDriver.MicrosoftWebDriver.targets')" Text="$([System.String]::Format('$(ErrorText)', '..\packages\Selenium.WebDriver.MicrosoftWebDriver.10.0.17134\build\Selenium.WebDriver.MicrosoftWebDriver.targets'))" />
+  </Target>
+  <Import Project="..\packages\Selenium.WebDriver.MicrosoftWebDriver.10.0.17134\build\Selenium.WebDriver.MicrosoftWebDriver.targets" Condition="Exists('..\packages\Selenium.WebDriver.MicrosoftWebDriver.10.0.17134\build\Selenium.WebDriver.MicrosoftWebDriver.targets')" />
+  <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
+       Other similar extension points exist, see Microsoft.Common.targets.
+  <Target Name="BeforeBuild">
+  </Target>
+  <Target Name="AfterBuild">
+  </Target>
+  -->
+</Project>

@@ -1,0 +1,12 @@
+addon tumblr version 1.0.0.0
+addon core version 4.107.0.0
+addon language version 4.106.1.0
+tumblr.open chrome 
+tumblr.login email ♥credential⟦twitter:login⟧ pword ♥credential⟦twitter:password⟧ search 
+tumblr.quote quotevalue ‴Work Hard To Get Success‴ sourcevalue ‴Steps Toward's Success‴ search
+delay 5
+tumblr.chat titlevalue ‴Friends‴ chatvalue ‴raj:‴ search
+delay 5 
+tumblr.link urlvalue ‴www.google.com‴ search
+delay 5
+tumblr.close 
