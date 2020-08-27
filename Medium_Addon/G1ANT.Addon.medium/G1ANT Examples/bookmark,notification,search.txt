@@ -1,0 +1,10 @@
+addon medium version 1.0.0.0
+addon core version 4.107.0.0
+addon language version 4.106.1.0
+medium.open chrome 
+medium.googlelogin email ♥credential⟦gmail:login⟧ pword ♥credential⟦gmail:password⟧ search 
+medium.bookmark search 
+medium.notification search 
+medium.search searchvalue ‴Robots‴ search 
+delay 5 
+medium.close 

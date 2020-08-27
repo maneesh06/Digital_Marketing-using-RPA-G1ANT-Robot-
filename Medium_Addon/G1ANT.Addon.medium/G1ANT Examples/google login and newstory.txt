@@ -1,0 +1,6 @@
+addon medium version 1.0.0.0
+addon core version 4.107.0.0
+addon language version 4.106.1.0
+medium.open chrome 
+medium.googlelogin email ♥credential⟦gmail:login⟧ pword ♥credential⟦gmail:password⟧ search 
+medium.newstory titlevalue ‴Robotic Process Automation‴ storyvalue ‴G1ANT.Robot.Ltd‴ search 
