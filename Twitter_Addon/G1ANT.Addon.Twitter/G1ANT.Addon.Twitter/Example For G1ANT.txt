@@ -1,0 +1,12 @@
+addon twitter version 1.0.0.0
+addon core version 4.107.0.0
+addon language version 4.106.1.0
+twitter.open chrome 
+twitter.login email ♥credential⟦twitter:login⟧ pword ♥credential⟦twitter:password⟧ search 
+delay 5
+twitter.search searchvalue ‴Malhar‴ search 
+twitter.tweet messagevalue ‴Hi! Welcome to G1ANT Studio‴
+delay 5 
+twitter.logout search 
+delay 5
+twitter.close 
